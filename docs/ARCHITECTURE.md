@@ -1,10 +1,10 @@
-# 🏗️ Visão Geral da Arquitetura do Sistema
+# Visão Geral da Arquitetura do Sistema
 
-## 📋 **Filosofia da Arquitetura**
+## **Filosofia da Arquitetura**
 
 O Sistema de Organização e controle dos chamados técnicos de T.I. segue uma **arquitetura em camadas** com princípios de **design orientado a domínio**, construído em FastAPI com separação clara de responsabilidades entre camadas de apresentação, negócio e dados.
 
-### **🎯 Padrões Arquiteturais**
+### **Padrões Arquiteturais**
 
 - **Arquitetura em Camadas**: Separação clara entre camadas de apresentação, negócio e dados
 - **Padrão Repository**: Abstração de acesso a dados
@@ -13,7 +13,7 @@ O Sistema de Organização e controle dos chamados técnicos de T.I. segue uma *
 
 ---
 
-## 🏛️ **Diagrama da Arquitetura do Sistema**
+## **Diagrama da Arquitetura do Sistema**
 
 ```
  ───────────────────────────────────────────────────────────────────────┐
@@ -96,7 +96,7 @@ Objetivo: Gerenciar ambiente, segurança, deploy e orquestração da aplicação
 
 Exemplo prático: Toda vez que você faz uma alteração no código e envia para o GitHub, essa camada cuida de testar e publicar automaticamente.
 
-## 📂 **Estrutura Atual do Projeto**
+## **Estrutura Atual do Projeto**
 
 ```
 projeto_aplicado/
@@ -105,18 +105,18 @@ projeto_aplicado/
 
 ---
 
-## 🌐 **Arquitetura de Componentes**
+## **Arquitetura de Componentes**
 
 ### 1. Camada de Apresentação (Frontend com React.js)
 
-🔧 **Componentes Principais**:
+#### **Componentes Principais**:
 - Componentes React: Unidades reutilizáveis que representam partes da interface (ex: formulário de chamado, lista de chamados).
 - React Router: Gerencia a navegação entre páginas sem recarregar (Single Page Application).
 - Hooks (useState, useEffect): Controlam estado e ciclo de vida dos componentes.
 - React Hook Form / Yup: Validação de dados no cliente antes de enviar ao backend.
 - Serviço de API (Axios/Fetch): Comunicação com a API via requisições HTTP.
 
-🧩 **Responsabilidades**:
+#### **Responsabilidades**:
 - Renderizar interfaces dinâmicas e responsivas.
 - Validar dados do usuário antes do envio.
 - Exibir mensagens de erro, loading e feedback.
@@ -124,14 +124,14 @@ projeto_aplicado/
 
 ### 2. Camada de Negócio (Backend com Node.js + Express)
 
-🔧 **Componentes Principais**:
+#### **Componentes Principais**:
 - Express Router: Define rotas REST (ex: /chamados, /usuarios, /auth).
 - Controllers: Recebem requisições, validam dados e delegam para serviços.
 - Middlewares: Autenticação JWT, CORS, tratamento de erros.
 - Services: Contêm a lógica de negócio (ex: regras de SLA, envio de notificações).
 - Utils: Funções auxiliares como formatação de datas, cálculo de prazos.
 
-🧩 **Responsabilidades**:
+#### **Responsabilidades**:
 - Validar e processar requisições recebidas do frontend.
 - Aplicar regras de negócio (ex: prazo de atendimento, escalonamento).
 - Gerenciar autenticação e autorização.
@@ -139,13 +139,13 @@ projeto_aplicado/
 
 ### 3. Camada de Dados (PostgreSQL + ORM)
 
-🔧 **Componentes Principais**:
+#### **Componentes Principais**:
 - Modelos ORM (Sequelize/Knex): Representam tabelas do banco como objetos JS.
 - Repositórios: Funções que executam operações CRUD.
 - Migrações: Scripts que versionam e atualizam o schema do banco.
 - Conexão com o banco: Gerenciada via pool de conexões.
 
-🧩 ***Responsabilidades***:
+#### ***Responsabilidades***:
 - Persistir dados de chamados, usuários, ativos, etc.
 - Realizar consultas otimizadas e seguras.
 - Gerenciar transações (ex: abertura de chamado + envio de notificação).
@@ -153,14 +153,14 @@ projeto_aplicado/
 
 ### 4. Camada de Infraestrutura
 
-🔧 **Componentes Principais**:
+#### **Componentes Principais**:
 - Docker: Cria containers para rodar o sistema de forma isolada e padronizada.
 - Render/Railway: Hospedagem da aplicação e do banco de dados.
 - GitHub Actions: Automatiza testes, builds e deploys (CI/CD).
 - Arquivo .env: Armazena variáveis sensíveis (ex: senhas, tokens).
 - Middleware de Segurança: CORS, rate limiting, headers seguros.
 
-🧩 **Responsabilidades**:
+#### **Responsabilidades**:
 - Garantir que o sistema rode de forma consistente em qualquer ambiente.
 - Automatizar o processo de deploy com segurança.
 - Proteger dados sensíveis e controlar acesso entre camadas.
@@ -168,7 +168,7 @@ projeto_aplicado/
 
 ---
 
-## 🗄️ **Arquitetura do Banco de Dados**
+## **Arquitetura do Banco de Dados**
 
 ### **Visão Geral do Relacionamento de Entidades**
 
@@ -179,7 +179,7 @@ projeto_aplicado/
 
 ---
 
-## 🔐 **Arquitetura de Segurança**
+## **Arquitetura de Segurança**
 
 ### **Fluxo de Autenticação**
 ```
@@ -200,7 +200,7 @@ projeto_aplicado/
 
 ---
 
-## 🚀 **Arquitetura de Implantação**
+## **Arquitetura de Implantação**
 
 ### **Ambiente de Desenvolvimento**
 ```
@@ -211,7 +211,7 @@ projeto_aplicado/
 └─────────────┘  └─────────────┘  └─────────────┘
 ```
 
-### 🔧 **Descrição dos Componentes**
+### **Descrição dos Componentes**
 
 #### FastAPI (Local)
 
@@ -231,7 +231,7 @@ projeto_aplicado/
 - Ideal para acelerar respostas e gerenciar tarefas assíncronas.
 - Porta padrão: 6379.
 
-## 🔧 **Justificativa da Escola das Tecnologias**
+## **Justificativa da Escola das Tecnologias**
 
 ### **Framework Backend: FastAPI**
 - **Suporte Async**: Alto desempenho async/await
@@ -261,7 +261,7 @@ projeto_aplicado/
 
 ---
 
-## 🔮 **Evolução Futura da Arquitetura**
+## **Evolução Futura da Arquitetura**
 
 ### **Fase 1: Estado Atual (MVP)**
 - ✅ Operações CRUD básicas
@@ -277,7 +277,7 @@ projeto_aplicado/
 
 ---
 
-## 🔗 **Documentação Relacionada**
+## **Documentação Relacionada**
 
 - **[Análise de Qualidade de Código](CODE_QUALITY.md)** - Padrões de design, princípios SOLID, code smells
 - **[Guia de Desenvolvimento](DEVELOPMENT.md)** - Configuração e fluxos de trabalho de desenvolvimento
